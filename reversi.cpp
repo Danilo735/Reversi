@@ -114,7 +114,7 @@ void igrajReversi() { // funkicja za pokretanje igre
         vector<pair<int, int>> potezi = dobaviValidnePoteze(tabla, trenutniIgrac); //kordinate poteza koje smo dobili iz funkcije
         if (potezi.empty()) { // ako nema poteza
             if (!imaValidnihPoteza(tabla, (trenutniIgrac == CRNI) ? BELI : CRNI)) { //ako niko vise ne moze da igra
-                cout << "Nema više validnih poteza za oba igrača. Kraj igre!" << endl;
+                cout << "Nema vise validnih poteza za oba igraca. Kraj igre!" << endl;
                 break; //izlazi se
             }
             cout << "Nema validnih poteza za " << trenutniIgrac << ". Preskakanje poteza." << endl; // kad jedan igrac nema potez, drugi igrac mora da igra umesto njega
@@ -122,14 +122,14 @@ void igrajReversi() { // funkicja za pokretanje igre
             continue; //nastavljamo dalje
         }
 
-        cout << "Igrač " << trenutniIgrac << ", unesite svoj potez (red i kolona): "; //radi lakseg redosleda ko je na redu
+        cout << "Igrac " << trenutniIgrac << ", unesite svoj potez (red i kolona): "; //radi lakseg redosleda ko je na redu
         int x, y;
         cin >> x >> y;
 
         if (cin.fail() || !potezispravan(tabla, trenutniIgrac, x, y)) { //neispravan unos ili potes nije ispravan
             cin.clear(); // Očisti greške
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Odbaci nevalidan unos
-            cout << "Nevažeći potez. Pokušajte ponovo." << endl; // daje sansu da igrac ponovo pokusa
+            cout << "Nevazeci potez. Pokusajte ponovo." << endl; // daje sansu da igrac ponovo pokusa
             continue; // nastavljamo dalje
         }
 
