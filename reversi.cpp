@@ -22,8 +22,7 @@ void inicijalizujTablu(vector<vector<char>>& tabla) {//radimo sa originalom. ako
     tabla[3][4] = CRNI;
     tabla[4][3] = CRNI;
     tabla[4][4] = BELI;
-    //pocetne pozicije cekera
-}
+    //pocetne pozicije cekera}
 
 void prikaziTablu(const vector<vector<char>>& tabla) { //radimo sa originalom i prikazujemo tablu
     cout << "  ";
@@ -33,11 +32,9 @@ void prikaziTablu(const vector<vector<char>>& tabla) { //radimo sa originalom i 
     for (int i = 0; i < VELICINA_TABLE; i++) {
         cout << i << " ";
         for (int j = 0; j < VELICINA_TABLE; j++) {//postavljamo redne brojeve redova
-            cout << tabla[i][j] << " ";
-        }
-        cout << endl;
-    }
-}
+            cout << tabla[i][j] << " ";}
+        
+        cout << endl;}}
 
 bool potezispravan(const vector<vector<char>>& tabla, char igrac, int x, int y) { // radimo sa originalom, zatim igrac koji je na redu i kordinate x i y za odredjeni ceker
     if (x < 0 || x >= VELICINA_TABLE || y < 0 || y >= VELICINA_TABLE || tabla[x][y] != PRAZNO) return false; //provera da li su kordinate x i y u redu
@@ -60,8 +57,7 @@ bool potezispravan(const vector<vector<char>>& tabla, char igrac, int x, int y) 
         //Da li smo nasli protivnika i da li je on vec postavio ceker na zadatu poziciju
         if (pronadjenProtivnik && nx >= 0 && nx < VELICINA_TABLE && ny >= 0 && ny < VELICINA_TABLE && tabla[nx][ny] == igrac) {
             return true;//potez je ispravan
-        }
-    }
+        }}
     return false;//potez nije ispravan
 }
 
@@ -71,11 +67,8 @@ vector<pair<int, int>> dobaviValidnePoteze(const vector<vector<char>>& tabla, ch
         for (int j = 0; j < VELICINA_TABLE; j++) {
             if (potezispravan(tabla, igrac, i, j)) { //proverava da li je potez validan za igrača na trenutnoj poziciji
                 potezi.emplace_back(i, j); //koordinate se vracaju u poteze
-            }
-        }
-    }
-    return potezi;
-}
+            }}}
+    return potezi;}
 
 void napraviPotez(vector<vector<char>>& tabla, char igrac, int x, int y) { //izvrsavamo potez
     tabla[x][y] = igrac; //igracevu figuru postavlja na poziciju x,y
@@ -87,15 +80,12 @@ void napraviPotez(vector<vector<char>>& tabla, char igrac, int x, int y) { //izv
         while (nx >= 0 && nx < VELICINA_TABLE && ny >= 0 && ny < VELICINA_TABLE && tabla[nx][ny] == protivnik) { // izvršava se dok su koordinate unutar granica table i dok se na toj poziciji nalazi protivnička figura. 
             zaOkretanje.emplace_back(nx, ny); //koordinate se vracaju u zaokretanje
             nx += pravci[i][0]; // koordinate se pomeraju kako bi se nastavilo sa ispitivanjem
-            ny += pravci[i][1];
-        }
+            ny += pravci[i][1];}
         if (nx >= 0 && nx < VELICINA_TABLE && ny >= 0 && ny < VELICINA_TABLE && tabla[nx][ny] == igrac) { // proverava se da li se na kraju nalazi figura igrača, tj validan potez 
             for (const auto& p : zaOkretanje) { // p = koordinate jedne figure protivnika
                 tabla[p.first][p.second] = igrac;
             }//ako su pronadjene svi cekeri se menjaju u boju igraca koji je stavio
-        }
-    }
-}
+        }}}
 
 bool imaValidnihPoteza(const vector<vector<char>>& tabla, char igrac) { // vraca tacno ili netacno
     return !dobaviValidnePoteze(tabla, igrac).empty(); // da li je vektor prazan
@@ -134,8 +124,7 @@ void igrajReversi() { // funkicja za pokretanje igre
         }
 
         napraviPotez(tabla, trenutniIgrac, x, y);
-        trenutniIgrac = (trenutniIgrac == CRNI) ? BELI : CRNI;
-    }
+        trenutniIgrac = (trenutniIgrac == CRNI) ? BELI : CRNI;}
 
     int brojCrnih = 0, brojBelih = 0; // broj cekera na tabli se deklarise
     for (const auto& red : tabla) { 
@@ -143,13 +132,11 @@ void igrajReversi() { // funkicja za pokretanje igre
             if (celija == CRNI) brojCrnih++;
             if (celija == BELI) brojBelih++;
             //uvecava se broj cekera na tabli
-        }
-    }
+        }}
     cout << "CRNI: " << brojCrnih << " BELI: " << brojBelih << endl; //kolko koji igrac ima cekera na tabli
     cout << "Pobednik: " << (brojCrnih > brojBelih ? "CRNI" : (brojBelih > brojCrnih ? "BELI" : "Nerešeno")) << endl; // ko je pobednik ili da li je nereseno
 }
 
 int main() {
     igrajReversi(); //pokrecemo igru
-    return 0;
-}
+    return 0;}
