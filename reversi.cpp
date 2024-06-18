@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #include <vector>
 #include <limits>
 
@@ -22,7 +22,8 @@ void inicijalizujTablu(vector<vector<char>>& tabla) {//radimo sa originalom. ako
     tabla[3][4] = CRNI;
     tabla[4][3] = CRNI;
     tabla[4][4] = BELI;
-    //pocetne pozicije cekera}
+    //pocetne pozicije cekera
+}
 
 void prikaziTablu(const vector<vector<char>>& tabla) { //radimo sa originalom i prikazujemo tablu
     cout << "  ";
